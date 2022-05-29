@@ -18,7 +18,7 @@ export default function TeamPage() {
             };
             fetchMatches();
         },
-        []
+        [teamName]
     );
 
     if (!team || !team.teamName) {
