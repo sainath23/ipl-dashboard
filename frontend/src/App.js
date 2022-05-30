@@ -1,5 +1,5 @@
 import React from 'react'
-import './App.css';
+import './App.scss';
 import TeamPage from "./pages/TeamPage";
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import MatchPage from "./pages/MatchPage";
