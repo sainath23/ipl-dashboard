@@ -27,4 +27,8 @@ public class TeamService {
         team.setMatches(matches);
         return team;
     }
+
+    public List<Team> findAll() {
+        return teamRepository.findAll();
+    }
 }

@@ -30,6 +30,11 @@ public class TeamRestController {
         this.matchService = matchService;
     }
 
+    @GetMapping
+    public ResponseEntity<ApiResponse<List<Team>>> getAllTeams() {
+        return ResponseEntity.ok(new ApiResponse<>(teamService.findAll(), "success"));
+    }
+
     @GetMapping("/{teamName}")
     public ResponseEntity<ApiResponse<Team>> getTeam(@PathVariable String teamName) {
         Team team = teamService.findByName(teamName);
