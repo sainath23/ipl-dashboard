@@ -14,9 +14,9 @@ export default function MatchPage() {
             const fetchMatches = async () => {
                 const response = await fetch(`http://localhost:8080/teams/${teamName}/matches?year=${year}`);
                 const payload = await response.json();
-                console.log(payload);
+                //console.log(payload);
                 setMatches(payload.data)
-                console.log(matches)
+                //console.log(matches)
             };
             fetchMatches();
         },

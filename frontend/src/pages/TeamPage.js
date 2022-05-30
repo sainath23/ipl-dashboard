@@ -16,9 +16,9 @@ export default function TeamPage() {
             const fetchTeam = async () => {
                 const response = await fetch(`http://localhost:8080/teams/${teamName}`);
                 const payload = await response.json();
-                console.log(payload);
+                //console.log(payload);
                 setTeam(payload.data)
-                console.log(team)
+                //console.log(team)
             };
             fetchTeam();
         },
