@@ -5,6 +5,11 @@ import com.sainath.ipldashboard.entity.Team;
 import com.sainath.ipldashboard.model.ApiResponse;
 import com.sainath.ipldashboard.service.MatchService;
 import com.sainath.ipldashboard.service.TeamService;
+import org.springframework.batch.core.BatchStatus;
+import org.springframework.batch.core.JobParametersInvalidException;
+import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
+import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
+import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -45,5 +50,10 @@ public class TeamRestController {
     public ResponseEntity<ApiResponse<List<Match>>> getMatchesForTeam(@PathVariable String teamName, @RequestParam Integer year) {
         List<Match> matches = matchService.findByTeamAndYear(teamName, year);
         return ResponseEntity.ok(new ApiResponse<>(matches, "success"));
+    }
+
+    @GetMapping("/run-job")
+    public BatchStatus runImportUserJob() {
+        return matchService.runImportUserJob();
     }
 }

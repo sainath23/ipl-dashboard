@@ -1,4 +1,4 @@
-package com.sainath.ipldashboard.data;
+package com.sainath.ipldashboard.batchjob;
 
 import lombok.Getter;
 import lombok.Setter;

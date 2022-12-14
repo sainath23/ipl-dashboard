@@ -1,4 +1,4 @@
-package com.sainath.ipldashboard.data;
+package com.sainath.ipldashboard.batchjob;
 
 import com.sainath.ipldashboard.entity.Team;
 import lombok.extern.slf4j.Slf4j;

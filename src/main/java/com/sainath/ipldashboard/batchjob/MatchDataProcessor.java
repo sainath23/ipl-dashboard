@@ -1,4 +1,4 @@
-package com.sainath.ipldashboard.data;
+package com.sainath.ipldashboard.batchjob;
 
 import com.sainath.ipldashboard.entity.Match;
 import org.springframework.batch.item.ItemProcessor;

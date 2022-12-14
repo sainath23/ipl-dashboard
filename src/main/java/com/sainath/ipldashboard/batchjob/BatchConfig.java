@@ -1,4 +1,4 @@
-package com.sainath.ipldashboard.data;
+package com.sainath.ipldashboard.batchjob;
 
 import com.sainath.ipldashboard.entity.Match;
 import org.springframework.batch.core.Job;
@@ -58,7 +58,7 @@ public class BatchConfig {
     public JdbcBatchItemWriter<Match> writer(DataSource dataSource) {
         return new JdbcBatchItemWriterBuilder<Match>()
                 .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
-                .sql("INSERT INTO match (id, city, match_date, player_of_match, venue, team1, team2, toss_winner, toss_decision, match_winner, result, result_margin, umpire1, umpire2)" +
+                .sql("INSERT INTO match_tbl (id, city, match_date, player_of_match, venue, team1, team2, toss_winner, toss_decision, match_winner, result, result_margin, umpire1, umpire2)" +
                         " VALUES (:id, :city, :matchDate, :playerOfMatch, :venue, :team1, :team2, :tossWinner, :tossDecision, :matchWinner, :result, :resultMargin, :umpire1, :umpire2)")
                 .dataSource(dataSource)
                 .build();
@@ -77,7 +77,7 @@ public class BatchConfig {
     @Bean
     public Step step1(JdbcBatchItemWriter<Match> writer) {
         return stepBuilderFactory.get("step1")
-                .<MatchInput, Match> chunk(10)
+                .<MatchInput, Match> chunk(100)
                 .reader(reader())
                 .processor(processor())
                 .writer(writer)
